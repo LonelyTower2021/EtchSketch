@@ -1,18 +1,19 @@
 .grid_container {
+    display: flex;
     margin: auto;
     text-align: center;
-    width: 672px;
-    height: 672px;
-    border: solid black 1px;
+    width: 960px;
+    height: 960px;
     background-color: lawngreen;
-    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 0;
 }
 
 .grid_cell {
     margin: 0;
-    height: 40px;
-    width: 40px;
+    box-sizing: border-box;
     border: solid black 1px;
     background-color: white;
 }
