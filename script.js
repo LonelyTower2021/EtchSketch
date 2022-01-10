@@ -5,13 +5,19 @@ function setUpGrid(e) {
 
 function populateGrid(grid, gridRowCount=4) {
     let cellDimension = (1 / gridRowCount) * 100;
+    let borderStyle = "solid black 1px";
     console.log(cellDimension);
     for (let i = 0; i < gridRowCount; i++) {
         for (let j = 0; j < gridRowCount ; j++) {
-            gridCell = document.createElement('div')
+            let gridCell = document.createElement('div')
             gridCell.classList.add("grid_cell")
             gridCell.style.width = `${cellDimension}%`
             gridCell.style.height = `${cellDimension}%`
+            gridCell.style.borderTop = borderStyle;
+            gridCell.style.borderLeft = borderStyle;
+            gridCell.style.background = "rgb(255, 255, 255)";
+            if (j === (gridRowCount - 1)) {gridCell.style.borderRight = borderStyle};
+            if (i === (gridRowCount - 1)) {gridCell.style.borderBottom = borderStyle};
             gridCell.addEventListener("mouseover", changeGridCellColor)
             grid.appendChild(gridCell)
         }
@@ -19,7 +25,16 @@ function populateGrid(grid, gridRowCount=4) {
 }
 
 function changeGridCellColor(e) {
-    this.style.backgroundColor = "black";
+    backgroundColor = this.style.backgroundColor;
+    console.log(backgroundColor);
+    let red = getRandomNumber(255);
+    let green = getRandomNumber(255);
+    let blue = getRandomNumber(255);
+    this.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+}
+
+function getRandomNumber(maxValue) {
+    return Math.floor(Math.random() * maxValue);
 }
 
 function updateGrid(e) {
